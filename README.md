@@ -40,7 +40,7 @@ and installation done.
 ## Adding & Customizing ruffle
 If you dont understand check index.json and package.json to understand it (i also reccomend checking and tinkering around the example that will be release and linked) ok now to the main part.
 Ruffle must be included in your HTML.
-Since NWRuffle handles script injection automatically, you only need to add the configuration and player container in your HTML file 
+Since NWRuffle handles script injection automatically, you only need to add the configuration and player container in your HTML file <br>
 **Example Setup**
 ```
 <div id="flash-content"></div>
@@ -107,7 +107,7 @@ Feel free to submit a pull request or open an issue.
 ### End
 <p align="center"> Made with ❤️ by <a href="https://github.com/Anikthedev-Official">Anikthedev</a> </p> 
 Special thanks:
-dr.taco - helped me very much
-agoknee - honest reviews
-my brother - its for him that i wanted to code
+dr.taco - helped me very much <br>
+agoknee - honest reviews <br>
+my brother - its for him that i wanted to code <br>
 
