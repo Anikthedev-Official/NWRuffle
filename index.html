@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>NWRuffle - Nevada Chaos</title>
+
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    /* Top bar */
+    .top-link {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 9999;
+    }
+
+    .top-link a {
+      color: #ff3333;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    /* Ruffle area */
+    #flash-content {
+      position: absolute;
+      top: 48px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    /* Fallback */
+    #fallback {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.6;
+      font-size: 22px;
+      pointer-events: none;
+    }
+
+    #fallback a {
+      color: #ff3333;
+      pointer-events: auto;
+    }
+  </style>
+
+  <!-- Global injector (loads ruffle.js automatically) -->
+  <script src="bootstrap.js"></script>
+</head>
+
+<body>
+
+  <div class="top-link">
+    <a href="test.html">another episode</a>
+  </div>
+
+  <!-- Ruffle mounts here -->
+  <div id="flash-content"></div>
+
+  <div id="fallback">
+    <div>Ruffle loading...</div>
+    <div>If stuck, try <a href="test.html">another episode</a></div>
+  </div>
+
+  <script>
+    function waitForRuffle(cb) {
+      if (window.RufflePlayer) cb();
+      else requestAnimationFrame(() => waitForRuffle(cb));
+    }
+
+    waitForRuffle(() => {
+      const container = document.getElementById("flash-content");
+
+      const ruffle = window.RufflePlayer.newest();
+      const player = ruffle.createPlayer();
+
+      Object.assign(player.style, {
+        width: "100%",
+        height: "100%",
+        display: "block"
+      });
+
+      player.config = {
+        backgroundColor: "#000044",
+        showLoadingBar: false,
+        showRuffleLogo: false,
+        showSpinner: false,
+        scale: "showAll"
+      };
+
+      container.appendChild(player);
+
+      // IMPORTANT: local file, no server, no encoding
+      player.load("file.swf");
+
+      console.log("[NWRuffle] SWF loaded: file.swf");
+    });
+  </script>
+
+</body>
+</html>

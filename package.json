@@ -1,0 +1,12 @@
+{
+  "name": "nw-ruffle-player",
+  "main": "index.html",
+  "dependencies": {
+    "@ruffle-rs/ruffle": "^0.2.0-nightly.2025.12.28"
+  },
+  "inject_js_start": "bootstrap.js",
+  "window": {
+    "width": 1000,
+    "height": 900
+  }
+}
