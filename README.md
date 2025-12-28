@@ -26,11 +26,20 @@ so below it add this line
 ```
 "inject_js_start": "bootstrap.js",
 ```
+and the dependencies of course
+```
+  "dependencies": {
+    "@ruffle-rs/ruffle": "latest"
+  },
+```
+
 Thats it and the Ruffle part
 # Adding ruffle
-add it in html now no more package.json
-like here is an example code
+add it in html since ruffle needs to be in the html page i guess
+and the ruffle.js is added automatically for less coding
+like here is an example javascript + div  code for index.html 
 ```
+  <div id="flash-content"></div>
     <script>
       // Settings
       // https://github.com/ruffle-rs/ruffle/wiki/Using-Ruffle#configuration-options
@@ -41,7 +50,7 @@ like here is an example code
           showLoadingBar: false,
           showRuffleLogo: false,
           showSpinner: false,
-          SWF: 'file.swf'
+          SWF: 'file.swf' // 
         }
       };
 
@@ -76,4 +85,3 @@ like here is an example code
       initialize();
     </script>
 ```
-and dont worry the ruffle.js is added automatically
