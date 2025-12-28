@@ -17,7 +17,7 @@ And with NW.js go to [Here](https://github.com/nwjs/nw.js/issues)
 But if you Want something or REALLY have some issues You can just go [Here](https://github.com/Anikthedev-Official/NWRuffle/)
 
 # Install NWRuffle
-Just Download In the releases tab or [Here](https://github.com/Anikthedev-Official/NWRuffle/releases)
+Just Download the project files
 and go to your NW.js project and unzip the folder there and add this below your 
 ```
 "main": "YourFileHere",
@@ -36,6 +36,7 @@ and
 ```
 "inject_js_start": "bootstrap.js",
 ```
+OR IT WILL NEVER EVER EVER WORK!!!!
 so and the example of the ruffle things should be 
 ```
   "ruffle": {
