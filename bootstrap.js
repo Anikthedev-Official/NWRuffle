@@ -1,8 +1,8 @@
-
+// im seriously tired of seeing other people's console logs when im debugging, but i want to discontinue this script but still keep my console clean
 (function filterConsole() {
   const real = window.console;
   function allow(args) {
-    return args.length && typeof args[0] === "string" && args[0].startsWith("[NWRuffle]");
+    return args.length && typeof args[0] === "string" && args[0].startsWith("[NWRuffle]", "[NWRuffle Server]");
   }
   ["log", "info", "warn", "error"].forEach(method => {
     const orig = real[method].bind(real);
@@ -14,10 +14,10 @@
 (function () {
   const fs = require("fs");
   const path = require("path");
-  const NAME = "[NWRuffle]";
+  const NAME = "[NWRuffle]"; // name, NAME!!!
 
 
-  const pkgPath = path.join(process.cwd(), "package.json");
+  const pkgPath = path.join(process.cwd(), "package.json"); // get PACKAGE.JSON
   let cfgAll = {};
   try {
     const pkg = JSON.parse(fs.readFileSync(pkgPath, "utf8"));
@@ -32,7 +32,7 @@
   const cfg = cfgAll.pages?.[pageName];
 
   if (!cfg) {
-    console.log(`${NAME} no Ruffle config for this page (${pageName})`);
+    console.log(`${NAME} no Ruffle config for this page (${pageName})`); // YES YES YES YES YES YES YES YES YES!!!
     return;
   }
 
@@ -59,19 +59,19 @@
   function loadRuffle(cb) {
     if (window.RufflePlayer) return cb();
     const s = document.createElement("script");
-    s.src = "http://localhost:8080/ruffle/ruffle.js";
+    s.src = "http://localhost:8080/ruffle/ruffle.js"; // this is where you GET RUFFLE FROM !!!
     s.onload = cb;
     document.head.appendChild(s);
   }
 
-  function createContainer(cfg) {
+  function createContainer(cfg) { // yes yes never ask
     const div = document.createElement("div");
     div.id = "ruffle-container";
     document.body.appendChild(div);
     return div;
   }
 
-  function applyLayout(el, cfg) {
+  function applyLayout(el, cfg) { // this makes my eyes burn
     el.style.position = "fixed";
     el.style.background = cfg.background || "black";
     el.style.overflow = "hidden";
@@ -93,7 +93,7 @@
   }
 
 
-  function initRuffle(cfg) {
+  function initRuffle(cfg) { // can i scream now 
     waitFor(() => window.RufflePlayer && document.body, () => {
       const container = createContainer(cfg);
       applyLayout(container, cfg);
@@ -114,7 +114,7 @@
 
       container.appendChild(player);
       player.load(`http://localhost:8080/${cfg.swf || "(none)"}`);
-      console.log(`${NAME} SWF loaded: ${cfg.swf}`);
+      console.log(`${NAME} SWF loaded: ${cfg.swf}`); // you didnt ask but its here
 
       container.RuffleAPI = {
         setLayout(l) { cfg.layout = l; applyLayout(container, cfg); },
@@ -124,7 +124,7 @@
     });
   }
 
-  waitFor(() => document.body, () => {
+  waitFor(() => document.body, () => { // atleast they work
     if (!cfg.enabled) {
       console.log(`${NAME} disabled for this page`);
       console.log(`${NAME} SWF configured: ${cfg.swf || "(none)"}`);
@@ -136,6 +136,6 @@
     console.log(`${NAME} SWF configured: ${cfg.swf || "(none)"}`);
     console.log(`${NAME} Ruffle version: ${RUFFLE_VERSION}`);
 
-    loadRuffle(() => initRuffle(cfg));
+    loadRuffle(() => initRuffle(cfg)); // finally load ruffle then i kill myself
   });
 })();
