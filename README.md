@@ -28,145 +28,52 @@ so below it add this line
 ```
 Thats it and the Ruffle part
 # Adding ruffle
-In package json and REMEMBER TO PUT THIS IN THE MIDDLE OF
+add it in html now no more package.json
+like here is an example code
 ```
-"main": "YourFileHere",
-```
-and
-```
-"inject_js_start": "bootstrap.js",
-```
-OR IT WILL NEVER EVER EVER WORK!!!!
-so and the example of the ruffle things should be 
-```
-  "ruffle": {
-    "pages": {
-      "index.html": {
-        "enabled": true,
-        "swf": "file.swf",
-        "width": 800,
-        "height": 600,
-        "layout": "center",
-        "background": "black",
-        "scale": "showAll"
-      },
-      "game.html": {
-        "enabled": true,
-        "swf": "gile.swf",
-        "width": 1024,
-        "height": 768,
-        "layout": "custom",
-        "x": 100,
-        "y": 50,
-        "background": "gray",
-        "scale": "showAll"
-      }
-    }
-  }
-```
-so 
-```
-"ruffle": {
-// the stuff here
-}
-```
-is the main part
-and 
-```
-"pages": {
-// pages here
-}
-```
-is the pages
-and by 
-```
-"index.html": {
-// contents here
-}
-```
- and stuff you know what its for and 
-```
-"enabled": true,
-```
-is to is it enabled or not 
-and 
-```
-"swf": "file.swf",
-```
- is the swf file of the page
-and
-```
-        "width": 800,
-        "height": 600,
-```
-is the width and height man
-BUT!
-```
-"layout": "center",
-```
-has three modes! 
-there is 
-```
-"fullscreen"
-```
-```
-"center"
-```
-```
-"custom"
-```
-and thats IT!
-```
-"x": Number,
-```
-is the x position of the box 
-```
-"y": Number,
-```
-is the y position of the box 
-and  
-```
-       "background": "black",
-        "scale": "showAll"
-```
- is just there .
- so together an good package.json for this would be
- ```
-{
-  "name": "nw-ruffle-player",
-  "main": "index.html",
-   "ruffle": {
-    "pages": {
-      "index.html": {
-        "enabled": true,
-        "swf": "file.swf",
-        "width": 800,
-        "height": 600,
-        "layout": "center",
-        "background": "black",
-        "scale": "showAll"
-      },
-      "test.html": {
-        "enabled": true,
-        "swf": "gile.swf",
-        "width": 1024,
-        "height": 768,
-        "layout": "custom",
-        "x": 100,
-        "y": 50,
-        "background": "gray",
-        "scale": "showAll"
-      }
-    }
-  },
-  
-  "inject_js_start": "bootstrap.js",
+    <script>
+      // Settings
+      // https://github.com/ruffle-rs/ruffle/wiki/Using-Ruffle#configuration-options
+      window.RufflePlayer = {
+        config: {
+          // Must be longform hex value
+          backgroundColor: '#000044',
+          showLoadingBar: false,
+          showRuffleLogo: false,
+          showSpinner: false,
+          SWF: 'file.swf'
+        }
+      };
 
-  "window": {
-    "width": 1000,
-    "height": 900
-  }
-}
+      function initialize () {
+        document.body.style.background = window.RufflePlayer.config.backgroundColor;
+        window.addEventListener('DOMContentLoaded', () => {
+          const container = document.querySelector('.flash-content');
+          const ruffle = window.RufflePlayer.newest();
+          const player = ruffle.createPlayer();
+          container.appendChild(player);
+          player.ruffle().load(window.RufflePlayer.config.SWF);
+          const rufflePlayer = document.querySelector('ruffle-player');
+
+          const splashBackground = '--splash-screen-background: ' + window.RufflePlayer.config.backgroundColor;
+          if (window.RufflePlayer.config.showRuffleLogo) {
+            rufflePlayer.setAttribute('style', splashBackground);
+          } else {
+            rufflePlayer.setAttribute('style', '--logo-display: none;' + splashBackground);
+          }
+
+          if (!window.RufflePlayer.config.showLoadingBar) {
+            rufflePlayer.shadowRoot.querySelector('.loadbar')
+              .setAttribute('style', 'display: none');
+          }
+          if (!window.RufflePlayer.config.showSpinner) {
+            rufflePlayer.shadowRoot.querySelector('.loading-animation')
+              .setAttribute('style', 'display: none');
+          }
+        });
+      }
+
+      initialize();
+    </script>
 ```
-# end
-not obfuscated anymoar
+and dont worry the ruffle.js is added automatically
