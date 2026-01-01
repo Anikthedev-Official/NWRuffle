@@ -9,7 +9,6 @@ it is made just for this purpose, so please support it */
     player: null,
     containerEl: null,
     lastSWF: null,
-// rocket science tbh 
 
     initialize(cb) {
       function wait() {
@@ -23,7 +22,6 @@ it is made just for this purpose, so please support it */
       wait();
     },
 
-
     container(id) {
       const el = document.getElementById(id);
       if (!el) {
@@ -32,40 +30,6 @@ it is made just for this purpose, so please support it */
       }
       NWRuffle.containerEl = el;
     },
-
-
-    load(swf) {
-      if (!NWRuffle.containerEl) {
-        console.error("[NWRuffle] container not set");
-        return;
-      }
-
-      if (!NWRuffle.main) {
-        console.error("[NWRuffle] not initialized");
-        return;
-      }
-
-
-      if (NWRuffle.player) {
-        NWRuffle.player.remove();
-      }
-
-      const player = NWRuffle.main.createPlayer();
-      NWRuffle.player = player;
-      NWRuffle.lastSWF = swf;
-
-      Object.assign(player.style, {
-        width: "100%",
-        height: "100%",
-        display: "block"
-      });
-
-      NWRuffle.containerEl.appendChild(player);
-      player.load(swf);
-
-      console.log("[NWRuffle] SWF loaded:", swf);
-    },
-
 
     swap(swf) {
       if (!NWRuffle.player) {
@@ -85,7 +49,6 @@ it is made just for this purpose, so please support it */
       }
     },
 
-
     reinstate() {
       if (!NWRuffle.containerEl) {
         console.error("[NWRuffle] reinstate failed: no container");
@@ -98,28 +61,25 @@ it is made just for this purpose, so please support it */
       }
 
       NWRuffle.initialize(() => {
-        const player = NWRuffle.main.createPlayer();
-        NWRuffle.player = player;
+        NWRuffle.player = NWRuffle.main.createPlayer();
 
-        Object.assign(player.style, {
+        Object.assign(NWRuffle.player.style, {
           width: "100%",
           height: "100%",
           display: "block"
         });
 
-        NWRuffle.containerEl.appendChild(player);
-        player.load(NWRuffle.lastSWF);
+        NWRuffle.containerEl.appendChild(NWRuffle.player);
+        NWRuffle.player.load(NWRuffle.lastSWF);
 
         console.log("[NWRuffle] reinstated:", NWRuffle.lastSWF);
       });
     },
 
-
     fullscreen() {
       if (!NWRuffle.containerEl) return;
       NWRuffle.containerEl.requestFullscreen?.();
     },
-
 
     setSize(w, h) {
       if (!NWRuffle.containerEl) return;
@@ -127,7 +87,6 @@ it is made just for this purpose, so please support it */
       NWRuffle.containerEl.style.height = h + "px";
     }
   };
-
 
   function injectRuffle() {
     if (window.RufflePlayer) return;

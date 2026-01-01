@@ -176,15 +176,6 @@ NWRuffle.player.load("file.swf");
 NWRuffle.swap("cats.swf");
 ```
 ---
-* `NWRuffle.load(swf)`
-
-&nbsp;&nbsp;Loads an SWF file into the player.
-&nbsp;&nbsp;Use this for the **first load** but the `NWRuffle.player.load` is the bestest option.
-&nbsp;&nbsp;Example : 
-```
-NWRuffle.load("cats.swf");
-```
----
 * `NWRuffle.destroy()` Completely removes the Ruffle player from the DOM.
 After calling this, the player no longer exists.
 ---
