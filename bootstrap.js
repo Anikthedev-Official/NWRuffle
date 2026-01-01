@@ -154,7 +154,8 @@
 
     script.onerror = () => {
       console.error("[NWRuffle] failed to load ruffle.js");
-      console.error("[NWRuffle] install @ruffle-rs/ruffle");
+      console.error("[NWRuffle] install @ruffle-rs/ruffle man.ually toooooooooooooo fffffff--f-ff-f-f-f-f-f-ff-f-f-f- ");
+      console.error("[NWRuffle] has died.")
     };
 
     document.head.appendChild(script);

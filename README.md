@@ -3,7 +3,12 @@
 </p>
 
 # NWRuffle
-This NWRuffle project combines and helps you to add Ruffle support to your NW.js projects
+This NWRuffle project combines and helps you to add Ruffle support to your NW.js projects with adding an api that just makes it so easy to handle ruffle
+[![npm](https://img.shields.io/npm/v/nwruffle?logo=npm)](https://www.npmjs.com/package/nwruffle)
+[![commit](https://img.shields.io/github/last-commit/Anikthedev-official/NWRuffle?logo=github)](https://github.com/Anikthedev-official/NWRuffle)
+
+
+
 
 ## 📘 Table of Contents
 
@@ -11,6 +16,10 @@ This NWRuffle project combines and helps you to add Ruffle support to your NW.js
 - [Installation](#installation)
 - [Adding & Customizing Ruffle](#adding--customizing-ruffle)
 - [Troubleshooting & Issues](#troubleshooting--issues)
+- [API](#api)
+- [Contributing](#contributing)
+- [End](#end)
+- [Images](#images)
 
 ### Overview
 
@@ -20,19 +29,18 @@ NWRuffle provides an easy way to add Ruffle support to your NW.js projects, Once
 
 ### Installation
 
-1. **Download** the NWRuffle project files.
-2. **Unzip** them inside your NW.js project directory.
-3. In your NW.js `package.json`, add the following line **below** your `"main": "YourFileHere",` entry:
-
-   ```json
-   "inject_js_start": "bootstrap.js",
-   ```
-4. Add the ruffle dependency
+1. **Download** the NWRuffle project by doing :
+```
+npm install nwruffle
+```
+3. In your NW.js `package.json`, add the dependecies
 ```
 "dependencies": {
   "@ruffle-rs/ruffle": "latest"
+  "nwruffle": "latest"
 }
 ```
+5. (remember) add this in html`  <script src="node_modules/nwruffle/bootstrap.js"></script>` 
 and installation done.
 
 ---

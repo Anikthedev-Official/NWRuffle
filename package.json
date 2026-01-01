@@ -1,0 +1,9 @@
+{
+  "name": "nwruffle",
+  "version": "1.0.2",
+  "description": "The wonders of ruffle and nw.js mixed with an easy api",
+  "main": "bootstrap.js",
+  "dependencies": {
+    "@ruffle-rs/ruffle": "^0.2.0-nightly.2025.12.31"
+  }
+}
