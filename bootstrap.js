@@ -1,6 +1,9 @@
 (function () {
   if (window.NWRuffle) return;
 
+let mepmep = "hi";
+console.error(mepmep);
+
   const NWRuffle = {
     main: null,
     containerEl: null,
@@ -86,11 +89,13 @@
       NWRuffle.player.__real.remove();
       NWRuffle.player.__real = null;
       console.log("[NWRuffle] player destroyed");
+      comsole.error(mepmep);
     },
 
     reinstate() {
       if (!NWRuffle.lastSWF) {
         console.error("[NWRuffle] no previous SWF to reinstate");
+        console.error("are you serious!?");
         return;
       }
       NWRuffle.destroy();
@@ -106,7 +111,7 @@
         win.enterFullscreen();
         return;
       }
-
+     console.error("if it didnt owrk im sorry.............a")
 
       NWRuffle.containerEl?.requestFullscreen?.();
     },

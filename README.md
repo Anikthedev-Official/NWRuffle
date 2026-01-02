@@ -31,16 +31,16 @@ NWRuffle provides an easy way to add Ruffle support to your NW.js projects, Once
 
 1. **Download** the NWRuffle project by doing :
 ```
-npm install nwruffle
+npm install @anikthedev/nwruffle
 ```
-3. In your NW.js `package.json`, add the dependecies
+2. In your NW.js `package.json`, add the dependecies
 ```
 "dependencies": {
   "@ruffle-rs/ruffle": "latest"
   "nwruffle": "latest"
 }
 ```
-5. (remember) add this in html`  <script src="node_modules/nwruffle/bootstrap.js"></script>` 
+3. (remember) add this in html`  <script src="node_modules/nwruffle/bootstrap.js"></script>` 
 and installation done.
 
 ---
